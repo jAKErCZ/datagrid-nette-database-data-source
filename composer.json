@@ -1,5 +1,5 @@
 {
-  "name": "ublaboo/datagrid-nette-database-data-source",
+  "name": "jakercz/datagrid-nette-database-data-source",
   "type": "library",
   "description": "Utility that makes possible to use Nette\\Database native query with Ublaboo\\DataGrid",
   "keywords": [

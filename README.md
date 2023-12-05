@@ -25,6 +25,10 @@ To install latest version of `contributte/datagrid-nette-database-data-source` u
 composer require ublaboo/datagrid-nette-database-data-source
 ```
 
+```bash
+composer require jakercz/datagrid-nette-database-data-source
+```
+
 ## Documentation
 
 For details on how to use this package, check out our [documentation](.docs).

@@ -67,28 +67,13 @@ class QueryHelper
 
 	public function getCountSelect(): string
 	{
-		$query = $this->query;
+		$countQuery = $this->query;
+		$countSql = $this->sqlCreator->create($countQuery);
+		$helpSql = "SELECT COUNT(*) AS count FROM ($countSql) AS subQuery";
+		$perse = $this->sqlParser->parse($helpSql);
+		$countSql = $this->sqlCreator->create($perse);
 
-		$query['SELECT'] = [[
-			'expr_type' => 'aggregate_function',
-			'alias' => [
-				'as' => true,
-				'name' => 'count',
-				'base_expr' => 'AS count',
-				'no_quotes' => [
-					'delim' => false,
-					'parts' => ['count'],
-				],
-			],
-			'base_expr' => 'COUNT',
-			'sub_tree' => [[
-				'expr_type' => 'colref',
-				'base_expr' => '*',
-				'sub_tree' => false,
-			]],
-		]];
-
-		return $this->sqlCreator->create($query);
+		return $countSql;
 	}
 
 	public function limit(int $limit, int $offset): string
